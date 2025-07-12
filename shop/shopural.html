@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO метатеги -->
+    <meta name="description"
+        content="Магазин запчастей UralShaphast в Челябинске. Оригинальные запчасти для спецтехники с доставкой по России. Гарантия качества.">
+    <meta name="keywords"
+        content="запчасти, урал, шафхаст, челябинск, автозапчасти, спецтехника, грузовики, камаз, урал">
+    <meta name="author" content="UralShaphast">
+    <meta property="og:title" content="UralShaphast - Магазин автозапчастей">
+    <meta property="og:description" content="Оригинальные запчасти для спецтехники в Челябинске">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://uralshapchast.ru">
+    <meta property="og:image" content="https://uralshapchast.ru/images/logo.jpg">
+    <!-- Конец SEO метатегов -->
+    <title>UralShaphast - Магазин автозапчастей</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #000000;
+            --secondary: #FFD700;
+            --accent: #FFA500;
+            --light: #FFFFFF;
+            --dark: #333333;
+        }
+
+        body {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F5F5F5 100%);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        header {
+            background: var(--primary);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--secondary);
+            font-size: 2rem;
+        }
+
+        .logo h1 {
+            color: var(--light);
+            font-size: 1.8rem;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('photo/fon2.png') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            color: white;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease;
+            color: var(--secondary);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        .cta-button {
+            background: var(--secondary);
+            color: var(--primary);
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .pricing-section {
+            padding: 5rem 5%;
+            background: var(--light);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--secondary);
+        }
+
+        .table-container {
+            overflow-x: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            animation: slideInUp 1s ease;
+        }
+
+        #parts-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        #parts-table th {
+            background: var(--primary);
+            color: var(--secondary);
+            padding: 20px;
+            text-align: left;
+            position: sticky;
+            top: 0;
+        }
+
+        #parts-table td {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        #parts-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        #parts-table tr:hover {
+            background: #fff9e6;
+            transform: scale(1.01);
+            transition: all 0.2s ease;
+        }
+
+        .features {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, var(--primary) 0%, #222222 100%);
+            color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            padding: 30px;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 215, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+
+        .footer-column h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .contact-info p {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--light);
+            transform: translateY(-5px);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(100px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(255, 215, 0, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <i class="fas fa-cogs"></i>
+            <h1>Ural<span>Zapchast</span></h1>
+        </div>
+        <nav>
+            <a href="#contacts" class="cta-button">Контакты</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Запчасти для вашей техники</h2>
+        <p>Быстрая доставка по всей России. Гарантия качества и лучшие цены!</p>
+        <a href="#catalog" class="cta-button">Перейти в каталог</a>
+    </section>
+
+    <section class="pricing-section" id="catalog">
+        <h2 class="section-title">Каталог запчастей</h2>
+        <div class="table-container">
+            <table id="parts-table">
+                <thead>
+                    <tr>
+                        <th>Номер</th>
+                        <th>Наименование</th>
+                        <th>Цена</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Данные будут загружены через JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2 class="section-title">Наши преимущества</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-shipping-fast"></i>
+                <h3>Быстрая доставка</h3>
+                <p>Доставка по России.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-certificate"></i>
+                <h3>Гарантия качества</h3>
+                <p>Все запчасти проходят многоуровневую проверку.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-tools"></i>
+                <h3>Оригинальные запчасти</h3>
+                <p>Только оригинальные комплектующие от производителей</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacts">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>О компании</h3>
+                <p>UralZapchast - лидер рынка автозапчастей с 2018 года. Более миллиарда довольных клиентов!</p>
+            </div>
+            <div class="footer-column">
+                <h3>Контакты</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> Челябинск, Копейское шоссе, 23</p>
+                    <p><i class="fas fa-phone"></i> +8 (951) 12-221-59</p>
+                    <p><i class="fas fa-phone"></i> +8 (951) 78-777-20</p>
+                    <p><i class="fas fa-envelope"></i> Gorwil@mail.ru</p>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Мы в соцсетях</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <p style="margin-top: 30px; opacity: 0.7;">© 2025 UralShaphast. Все права защищены.</p>
+    </footer>
+
+    <script>
+        const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRkk_48AbCHcV69J4Xtpqpcp2ahRlpssLHD_8Ba3xDgrmUn-HhHUEYu2ea7dRivOZEu-OniIfKnvnSO/pub?output=csv";
+
+        document.addEventListener('DOMContentLoaded', loadPartsData);
+
+        async function loadPartsData() {
+            try {
+                const response = await fetch(SHEET_URL);
+                const csvData = await response.text();
+                const parts = parseCSV(csvData);
+                renderPartsTable(parts);
+            } catch (error) {
+                console.error('Ошибка загрузки данных:', error);
+                document.getElementById('parts-table').innerHTML =
+                    '<tr><td colspan="3" style="text-align:center;padding:40px;color:red;">Ошибка загрузки данных. Пожалуйста, попробуйте позже.</td></tr>';
+            }
+        }
+
+        function parseCSV(csv) {
+            const rows = csv.split('\n').slice(1);
+            return rows.map(row => {
+                const [id, name, price] = row.split(',');
+                return {
+                    id: id?.trim() || '',
+                    name: name?.trim() || '',
+                    price: Number(price) || 0
+                };
+            });
+        }
+
+        function renderPartsTable(parts) {
+            const tbody = document.querySelector('#parts-table tbody');
+            tbody.innerHTML = '';
+
+            parts.forEach((part, index) => {
+                const row = document.createElement('tr');
+                row.style.opacity = '0';
+                row.style.transform = 'translateY(20px)';
+                row.style.transition = `all 0.5s ease ${index * 0.1}s`;
+
+                row.innerHTML = `
+                    <td>${part.id}</td>
+                    <td>${part.name}</td>
+                    <td>${part.price.toLocaleString('ru-RU')} ₽</td>
+                `;
+
+                tbody.appendChild(row);
+
+                setTimeout(() => {
+                    row.style.opacity = '1';
+                    row.style.transform = 'translateY(0)';
+                }, 100);
+            });
+        }
+
+        setInterval(loadPartsData, 5 * 60 * 1000);
+    </script>
+</body>
+
+</html>
